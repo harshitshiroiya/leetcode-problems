@@ -1,18 +1,11 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
-        length = len(nums)
-        dp = [0] * length
+        n = len(nums)
+        maxPos = 0
+        i = 0
+        while i <= maxPos:
+            maxPos = max(maxPos, i + nums[i])
+            if maxPos >= n - 1: return True
+            i += 1
         
-        dp[0] = nums[0]
-        
-        for i in range(1, length - 1):
-            
-            if dp[i - 1] < i:
-                return False
-            
-            dp[i] = max(i + nums[i], dp[i - 1])
-            
-            if dp[i] >= length - 1:
-                return True
-        
-        return dp[length - 2] >= length - 1
+        return False
