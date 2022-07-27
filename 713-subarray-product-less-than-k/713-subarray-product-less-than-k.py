@@ -1,14 +1,12 @@
 class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
-        if k == 0: return 0
-        k = math.log(k)
+        left, prod, count = 0, 1, 0
+            
+        for right in range(len(nums)):
+            prod *= nums[right]            
 
-        prefix = [0]
-        for x in nums:
-            prefix.append(prefix[-1] + math.log(x))
-
-        ans = 0
-        for i, x in enumerate(prefix):
-            j = bisect.bisect(prefix, x + k - 1e-9, i+1)
-            ans += j - i - 1
-        return ans
+            while prod >= k and left <= right:                    
+                prod /= nums[left]
+                left += 1                        
+            count += right - left + 1                
+        return count
