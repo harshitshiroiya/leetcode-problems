@@ -8,6 +8,8 @@ class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         ret = []
         level = [root]
+        if not root:
+            return []
         while root and level:
             currentNodes = []
             nextLevel = []
@@ -19,4 +21,6 @@ class Solution:
                     nextLevel.append(node.right)
             ret.append(currentNodes)
             level = nextLevel
-        return ret
+        return ret  
+        
+        
