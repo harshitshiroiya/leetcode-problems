@@ -1,8 +1,13 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        d = {}
-        for w in (strs):
-            key = tuple(sorted(w))
-            d[key] = d.get(key, []) + [w]
-            print (d[key])
-        return d.values()
+        h = {}
+        for word in strs:
+            sortedWord = ''.join(sorted(word))
+            if sortedWord not in h:
+                h[sortedWord] = [word]
+            else:
+                h[sortedWord].append(word)
+        final = []
+        for value in h.values():
+            final.append(value)
+        return final
