@@ -1,4 +1,4 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        nums.sort()
-        return nums[len(nums)//2]
+        counts = collections.Counter(nums)
+        return max(counts.keys(), key=counts.get)
