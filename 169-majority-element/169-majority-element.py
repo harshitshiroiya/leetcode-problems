@@ -1,4 +1,7 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        counts = collections.Counter(nums)
-        return max(counts.keys(), key=counts.get)
+        majority_count = len(nums)//2
+        while True:
+            candidate = random.choice(nums)
+            if sum(1 for elem in nums if elem == candidate) > majority_count:
+                return candidate
