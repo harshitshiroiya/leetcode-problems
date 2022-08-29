@@ -7,3 +7,4 @@ class Solution:
                 hash_map[n] = i
             else:
                 return [hash_map[x],i]
+        
